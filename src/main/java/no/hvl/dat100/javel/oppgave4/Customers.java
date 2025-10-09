@@ -29,6 +29,8 @@ public class Customers {
     }
 
     // c) return reference to customer with given id (if exists)
+
+    // TODO: remember to add a check for null
     public Customer getCustomer(int customer_id) {
 
         Customer c = null;

@@ -14,11 +14,17 @@ public class CustomersMain {
 
         // a) Complete constructor
 
-        Customers customers = new Customers(2);
+        Customers customers = new Customers(10);
 
 
         // b) count number of non-null references
 
+        //f
+        Customer c = customers.getCustomer(2);
 
+        if (c != null) {
+            System.out.println(c.getCustomer_id());
+
+        }
     }
 }

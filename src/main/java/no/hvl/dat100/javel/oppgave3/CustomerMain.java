@@ -41,5 +41,9 @@ public class CustomerMain {
 
         customer1.setCustomer_id(69);
         System.out.println(customer1.toString());
+
+        Customer[] customertemp = new Customer[2];
+        customertemp[0] = new Customer();
+        System.out.println(customertemp[0].toString());
     }
 }
