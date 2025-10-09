@@ -12,12 +12,13 @@ public class CustomersMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
+        // a) Complete constructor
 
-         Write code that uses and tests the methods implemented in the Customers class
+        Customers customers = new Customers(2);
 
-        */
+
+        // b) count number of non-null references
+
 
     }
 }

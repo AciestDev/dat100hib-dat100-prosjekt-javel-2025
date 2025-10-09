@@ -1,27 +1,59 @@
 package no.hvl.dat100.javel.oppgave1;
 
+import java.util.OptionalDouble;
+import java.util.stream.DoubleStream;
+
+
 public class DailyPower {
 
     // a) print power prices during a day
     public static void printPowerPrices(double[] prices) {
 
-        // TODO
+        for (int i = 0; i<prices.length; i++){
+
+            if(i % 6 != 0) {
+                System.out.print(prices[i] + "NOK ");
+            } else{
+                System.out.println();
+                System.out.print(prices[i] + "NOK  ");
+            }
+        }
 
     }
 
     // b) print power usage during a day
     public static void printPowerUsage(double[] usage) {
 
-        // TODO
+        for (int i = 0; i<usage.length; i++){
+
+            if(i % 6 != 0) {
+                System.out.print(usage[i] + "kWh ");
+            } else{
+                System.out.println();
+                System.out.print(usage[i] + "kWh ");
+            }
+        }
+    }
+    /*
+    public static void printUsage(double[] usage, String things) {
+
+        for (int i = 0; i<usage.length; i++){
+
+            if(i % 6 == 0) {
+                System.out.println();
+                }
+            System.out.print(usage[i] + things + " ");
+        }
 
     }
+    */
 
     // c) compute power usage for a single day
     public static double computePowerUsage(double[] usage) {
 
         double sum = 0;
 
-        // TODO
+        sum = DoubleStream.of(usage).sum();
 
         return sum;
     }
@@ -31,7 +63,11 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for (int i = 0; i<prices.length; i++){
+            price = price + usage[i] * prices[i];
+        }
+
+        price = Math.round(price * 100) / 100.0;
 
         return price;
     }
@@ -44,7 +80,13 @@ public class DailyPower {
 
         double support = 0;
 
-        // TODO
+        double sum = usage * price;
+
+        if (price > THRESHOLD) {
+
+            support = sum * PERCENTAGE;
+            support = Math.round(support * 100) / 100.0;
+        }
 
         return support;
     }
@@ -54,7 +96,12 @@ public class DailyPower {
 
         double support = 0;
 
-        // TODO
+        for (int i = 0; i<prices.length; i++){
+            if (prices[i] > THRESHOLD) {
+                support = support + getSupport(usage[i], prices[i]);
+            }
+            support = Math.round(support * 100) / 100.0;
+        }
 
         return support;
     }
@@ -66,17 +113,25 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for(int i = 0; i<usage.length; i++){
+            price = price + usage[i] * NORGESPRIS_KWH;
+            price = Math.round(price * 100.0) / 100.0;
+        }
+        price = Math.round(price * 100.0) / 100.0;
 
         return price;
     }
 
-    // g) compute peak usage during a single day
+    // h) compute peak usage during a single day
     public static double findPeakUsage(double[] usage) {
 
         double temp_max = 0;
 
-        // TODO
+        for(int i = 0; i<usage.length; i++){
+            if(usage[i] > temp_max){
+                temp_max = usage[i];
+            }
+        }
 
         return temp_max;
     }
@@ -85,7 +140,9 @@ public class DailyPower {
 
         double average = 0;
 
-        // TODO
+        average = DoubleStream.of(usage).average().getAsDouble();
+
+        average = Math.round(average * 100) / 100.0;
 
         return average;
     }

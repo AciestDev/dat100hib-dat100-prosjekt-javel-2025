@@ -7,15 +7,21 @@ public class MonthlyPower {
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-        // TODO
-
+        for(int i = 0; i < usage.length; i++){
+            DailyPower.printPowerUsage(usage[i]);
+            // DailyPower.printUsage(usage[i], "kWh");
+            System.out.println();
+        }
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
 
-        // TODO
-
+        for (int i = 0; i < prices.length; i++){
+            DailyPower.printPowerPrices(prices[i]);
+            //DailyPower.printUsage(prices[i], "NOK");
+            System.out.println();
+        }
     }
 
     // c) compute total power usage for a month
@@ -23,7 +29,11 @@ public class MonthlyPower {
 
         double sum = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++){
+            sum = sum + DailyPower.computePowerUsage(usage[i]);
+        }
+
+        sum = Math.round(sum * 100.0) / 100.0;
 
         return sum;
     }
@@ -31,12 +41,8 @@ public class MonthlyPower {
     // d) determine whether a given threshold in powerusage for the month has been exceeded
     public static boolean exceedThreshold(double[][] powerusage, double threshold) {
 
-        boolean exceeded = false;
-        double usage = 0;
+        return computePowerUsage(powerusage) < threshold;
 
-        // TODO
-
-        return exceeded;
     }
 
     // e) compute spot price
@@ -44,8 +50,10 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
-
+        for (int i = 0; i < prices.length; i++){
+            price = price + DailyPower.computeSpotPrice(usage[i], prices[i]);
+        }
+        price = Math.round(price * 100.0) / 100.0;
         return price;
     }
 
@@ -54,7 +62,11 @@ public class MonthlyPower {
 
         double support = 0;
 
-        // TODO
+        for (int i = 0; i < prices.length; i++){
+            support = support + DailyPower.computePowerSupport(usage[i], prices[i]);
+        }
+
+        support = Math.round(support * 100) / 100.0;
 
         return support;
     }
@@ -64,7 +76,11 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++){
+            price = price + DailyPower.computeNorgesPrice(usage[i]);
+            price = Math.round(price * 100.0) / 100.0;
+        }
+        price = Math.round(price * 100.0) / 100.0;
 
         return price;
     }

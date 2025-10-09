@@ -5,6 +5,5 @@ public enum PowerAgreementType {
     SPOTPRICE,
     POWERSUPPORT,
     NORGESPRICE,
-
 }
 
