@@ -29,25 +29,17 @@ public class Customer {
     public String getEmail() {
         return email;
     }
-    public int getCustomer_id() {
-        return customer_id;
-    }
+    public int getCustomer_id() { return customer_id; }
     public PowerAgreementType getPowerAgreementType() {
         return powerAgreementType;
     }
 
-    public void setName(String newName) {
-        this.name = newName;
-    }
-    public void setEmail(String newEmail) {
-        this.email = newEmail;
-    }
+    public void setName(String newName) { this.name = newName; }
+    public void setEmail(String newEmail) { this.email = newEmail; }
     public void setCustomer_id(int newCustomer_id) {
         this.customer_id = newCustomer_id;
     }
-    public void setPowerAgreementType(PowerAgreementType newPowerAgreementType) {
-        this.powerAgreementType = newPowerAgreementType;
-    }
+    public void setPowerAgreementType(PowerAgreementType newPowerAgreementType) { this.powerAgreementType = newPowerAgreementType; }
 
     public String toString() {
         String print = "";

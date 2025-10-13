@@ -15,16 +15,43 @@ public class CustomersMain {
         // a) Complete constructor
 
         Customers customers = new Customers(10);
+        Customer[] test = customers.getCustomers();
 
+        for (int i = 0; i < test.length; i++) {
+            test[i] = new Customer();
+            System.out.println(test[i].toString());
+        }
+
+
+        test[0].setName("Sander");
+        test[0].setEmail("sander@gmail.com");
+        test[0].setCustomer_id(4);
+        test[0].setPowerAgreementType(PowerAgreementType.SPOTPRICE);
+
+        test[1].setName("Tim");
+        test[1].setEmail("tim@gmail.com");
+        test[1].setCustomer_id(1);
+        test[1].setPowerAgreementType(PowerAgreementType.NORGESPRICE);
+
+        System.out.println(test[0].toString());
+        System.out.println(test[1].toString());
 
         // b) count number of non-null references
 
+        // c) return reference to customer with given id (if exists)
+
+        // d) add a customer to the reference table
+
+        customers.addCustomer(test[2]);
+
+        // e) remove customer with given id from reference table
+
         //f
-        Customer c = customers.getCustomer(2);
+        /* Customer test = customers.getCustomer(2);
 
-        if (c != null) {
-            System.out.println(c.getCustomer_id());
-
+        if (test != null) {
+            System.out.println(test.getCustomer_id());
         }
+         */
     }
 }
