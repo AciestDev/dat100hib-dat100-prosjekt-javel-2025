@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Customers {
 
     private Customer[] customers;
+    private int nextFreeIndex = 0;
 
     // a) Complete constructor
     public Customers(int size) {
@@ -36,35 +37,54 @@ public class Customers {
 
         Customer c = null;
 
-            for (int i = 0; i < customers.length; i++) {
-                if (customers[i].getCustomer_id() == customer_id && customers[i] != null) {
-                    c = customers[i];
-                }
+        int i = 0;
+
+        do {
+            if (customers[i].getCustomer_id() == customer_id && customers[i] != null) {
+                c = customers[i];
+            } else {
+                System.out.println("Customer: " + customer_id + " no exist lol. Try a different customer bozo");
             }
+            i++;
+        } while (c == null && i < customers.length);
 
         return c;
     }
 
     // d) add a customer to the reference table
-
-    // TODO check for valid answer then set to true if yes + test to see if it adds to customers
     public boolean addCustomer(Customer c) {
 
         boolean inserted = false;
 
-        int answer = Integer.parseInt(JOptionPane.showInputDialog(
-                "Do you want to add new customer or read from existing customer? \n " +
-                "add = 1 \n read from existing user = 2"));
 
-        if (answer == 1) {
-            c.setName(JOptionPane.showInputDialog("What is the name of the customer? "));
-            c.setEmail(JOptionPane.showInputDialog("What is the email of the customer? "));
-            c.setCustomer_id(Integer.parseInt(JOptionPane.showInputDialog("What is the customer_id of the customer? ")));
-            c.setPowerAgreementType(PowerAgreementType.valueOf(JOptionPane.showInputDialog("What is the powerAgreement of the customer? ")));
-        } else if (answer == 2) {
-
+        /*
+        if (nextFreeIndex >= customers.length) {
+            System.out.println("Doesn't work. Pls fix code lmao");
         }
 
+        customers[nextFreeIndex] = c;
+
+        do {
+            nextFreeIndex++;
+        } while (nextFreeIndex < customers.length && customers[nextFreeIndex] != null);
+
+        switch (customers) {
+            case null:
+                inserted = true;
+                customers = c;
+                break;
+            case !Boolean.parseBoolean(null):
+                break;
+            default:
+                System.out.println("Doesn't work. Pls fix code lmao");
+        }
+        */
+        for(int i = 0; i < customers.length; i++) {
+            if (customers[i] == null) {
+                customers[i] = c;
+                inserted = true;
+            }
+        }
         return inserted;
     }
 
@@ -82,10 +102,6 @@ public class Customers {
     // f) return reference table with all customers
     public Customer[] getCustomers() {
 
-        Customer[] customers = null;
-
-        customers = this.customers;
-
-        return customers;
+        return this.customers;
     }
 }

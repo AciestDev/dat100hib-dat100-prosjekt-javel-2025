@@ -14,8 +14,8 @@ public class CustomersMain {
 
         // a) Complete constructor
 
-        Customers customers = new Customers(10);
-        Customer[] test = customers.getCustomers();
+        Customers ppl = new Customers(10);
+        Customer[] test = ppl.getCustomers();
 
         for (int i = 0; i < test.length; i++) {
             test[i] = new Customer();
@@ -38,11 +38,11 @@ public class CustomersMain {
 
         // b) count number of non-null references
 
+        System.out.println(ppl.countNonNull());
+
         // c) return reference to customer with given id (if exists)
 
         // d) add a customer to the reference table
-
-        customers.addCustomer(test[2]);
 
         // e) remove customer with given id from reference table
 
