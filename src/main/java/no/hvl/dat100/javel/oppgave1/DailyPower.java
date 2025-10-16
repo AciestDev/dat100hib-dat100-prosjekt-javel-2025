@@ -97,11 +97,10 @@ public class DailyPower {
         double support = 0;
 
         for (int i = 0; i<prices.length; i++){
-            if (prices[i] > THRESHOLD) {
-                support = support + getSupport(usage[i], prices[i]);
-            }
-            support = Math.round(support * 100) / 100.0;
+            support = support + getSupport(usage[i], prices[i]);
         }
+
+        support = Math.round(support * 100) / 100.0;
 
         return support;
     }

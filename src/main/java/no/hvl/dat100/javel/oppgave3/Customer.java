@@ -47,7 +47,8 @@ public class Customer {
         print += "Name: " + name + "\n";
         print += "Email: " + email + "\n";
         print += "Customer_id: " + customer_id + "\n";
-        print += "PowerAgreementType: " + powerAgreementType + "\n";
+        print += "PowerAgreementType: " + powerAgreementType + "\n" + "\n";
+
 
         return print;
     }

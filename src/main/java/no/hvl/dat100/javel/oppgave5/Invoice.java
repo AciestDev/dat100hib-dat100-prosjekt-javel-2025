@@ -17,19 +17,38 @@ public class Invoice {
 
     public Invoice(Customer c, String month, double[][] usage, double[][] power_prices) {
 
-        // TODO - konstruktør
+        this.c = c;
+        this.month = month;
+        this.usage = usage;
+        this.prices = power_prices;
+        this.amount = 0.0;
 
     }
 
     public void computeAmount() {
 
-        // TODO
+        if (c.getPowerAgreementType().equals("SPOTPRICE")) {
+
+            amount = MonthlyPower.computeSpotPrice(usage, prices);
+
+        } else if (c.getPowerAgreementType().equals("POWERSUPPORT")) {
+
+            double temp = MonthlyPower.computeSpotPrice(usage, prices);
+            amount = temp - MonthlyPower.computePowerSupport(usage, prices);
+
+            // amount = MonthlyPower.computePowerSupport(usage, prices);
+
+        } else if (c.getPowerAgreementType().equals("NORGESPRICE")) {
+
+            amount = MonthlyPower.computeNorgesPrice(usage);
+
+        }
 
     }
 
     public void printInvoice() {
 
-        // TODO
+        System.out.println("Your invoice in: " + month + " is: " + amount);
 
     }
 }

@@ -24,7 +24,7 @@ public class Customers {
         int count = 0;
 
         for(int i = 0; i < customers.length; i++) {
-            if(customers[i] != null) {
+            if(customers[i] != null || customers[i].getName() != null || customers[i].getEmail() != null || customers[i].getCustomer_id() != 0 || customers[i].getPowerAgreementType() != null) {
                 count++;
             }
         }
@@ -39,14 +39,17 @@ public class Customers {
 
         int i = 0;
 
-        do {
-            if (customers[i].getCustomer_id() == customer_id && customers[i] != null) {
-                c = customers[i];
-            } else {
-                System.out.println("Customer: " + customer_id + " no exist lol. Try a different customer bozo");
-            }
-            i++;
-        } while (c == null && i < customers.length);
+
+            do {
+                if (customers[i] != null && customers[i].getCustomer_id() == customer_id) {
+                    c = customers[i];
+                } else if (customers[i] != null && customers[i].getCustomer_id() != customer_id && i < customers.length) {
+
+                } else {
+                    System.out.println("Customer: " + customer_id + " not found");
+                }
+                i++;
+            } while (c == null && i < customers.length && customers[i] != null);
 
         return c;
     }
@@ -54,17 +57,19 @@ public class Customers {
     // d) add a customer to the reference table
     public boolean addCustomer(Customer c) {
 
-        boolean inserted = false;
+        boolean inserted = true;
 
         if (nextFreeIndex >= customers.length) {
             System.out.println("Doesn't work. Pls fix code lmao");
+            inserted = false;
+        } else if (customers[nextFreeIndex] == null) {
+            customers[nextFreeIndex] = c;
         }
-
-        customers[nextFreeIndex] = c;
 
         do {
             nextFreeIndex++;
         } while (nextFreeIndex < customers.length && customers[nextFreeIndex] != null);
+
         /*
         switch (customers) {
             case null:
@@ -92,8 +97,23 @@ public class Customers {
 
         Customer c = null;
 
-        c = getCustomer(customer_id);
-        c = new Customer();
+        for (int i = 0; i <= customers.length; i++) {
+            if (customers[i] != null && customers[i].getCustomer_id() == customer_id) {
+                c = customers[i];
+                customers[i] = null;
+                System.out.println("Customer with id: " + customer_id + " is removed. \nThis was the customers info:");
+
+                for (int j = i; j < customers.length - 1; j++) {
+                    customers[j] = customers[j + 1];
+                }
+                customers[customers.length - 1] = null;
+                break;
+            }
+        }
+
+        if (c == null) {
+            System.out.println("Customer " + customer_id + " not found.");
+        }
 
         return c;
     }

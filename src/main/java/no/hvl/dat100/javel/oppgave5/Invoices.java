@@ -4,7 +4,9 @@ public class Invoices {
 
     public static void processInvoices(Invoice[] invoices) {
 
-        // TODO
+        for (Invoice i : invoices){
+            i.printInvoice();
+        }
 
     }
 }
