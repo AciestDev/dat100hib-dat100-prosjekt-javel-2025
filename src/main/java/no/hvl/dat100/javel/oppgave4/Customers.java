@@ -56,8 +56,6 @@ public class Customers {
 
         boolean inserted = false;
 
-
-        /*
         if (nextFreeIndex >= customers.length) {
             System.out.println("Doesn't work. Pls fix code lmao");
         }
@@ -67,7 +65,7 @@ public class Customers {
         do {
             nextFreeIndex++;
         } while (nextFreeIndex < customers.length && customers[nextFreeIndex] != null);
-
+        /*
         switch (customers) {
             case null:
                 inserted = true;
@@ -78,13 +76,14 @@ public class Customers {
             default:
                 System.out.println("Doesn't work. Pls fix code lmao");
         }
-        */
+
         for(int i = 0; i < customers.length; i++) {
             if (customers[i] == null) {
                 customers[i] = c;
                 inserted = true;
             }
         }
+         */
         return inserted;
     }
 

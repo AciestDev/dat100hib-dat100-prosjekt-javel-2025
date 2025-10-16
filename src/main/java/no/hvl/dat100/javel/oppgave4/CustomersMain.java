@@ -15,6 +15,8 @@ public class CustomersMain {
         // a) Complete constructor
 
         Customers ppl = new Customers(10);
+        Customer c = new Customer();
+        ppl.addCustomer(c);
         Customer[] test = ppl.getCustomers();
 
         for (int i = 0; i < test.length; i++) {
