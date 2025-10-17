@@ -5,6 +5,7 @@ public class Invoices {
     public static void processInvoices(Invoice[] invoices) {
 
         for (Invoice i : invoices){
+            i.computeAmount();
             i.printInvoice();
         }
 
