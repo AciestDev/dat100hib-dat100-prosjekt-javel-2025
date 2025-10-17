@@ -31,16 +31,22 @@ public class Invoice {
 
             amount = MonthlyPower.computeSpotPrice(usage, prices);
 
+            System.out.println(amount);
+
         } else if (c.getPowerAgreementType().equals("POWERSUPPORT")) {
 
             double temp = MonthlyPower.computeSpotPrice(usage, prices);
             amount = temp - MonthlyPower.computePowerSupport(usage, prices);
+
+            System.out.println(amount);
 
             // amount = MonthlyPower.computePowerSupport(usage, prices);
 
         } else if (c.getPowerAgreementType().equals("NORGESPRICE")) {
 
             amount = MonthlyPower.computeNorgesPrice(usage);
+
+            System.out.println(amount);
 
         }
 
