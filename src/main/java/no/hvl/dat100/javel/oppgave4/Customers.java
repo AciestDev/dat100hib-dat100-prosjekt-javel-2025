@@ -24,8 +24,10 @@ public class Customers {
         int count = 0;
 
         for(int i = 0; i < customers.length; i++) {
-            if(customers[i] != null || customers[i].getName() != null || customers[i].getEmail() != null || customers[i].getCustomer_id() != 0 || customers[i].getPowerAgreementType() != null) {
+            if(customers[i] != null) {
                 count++;
+            } else {
+                System.out.println("tings");
             }
         }
 
@@ -107,6 +109,7 @@ public class Customers {
                     customers[j] = customers[j + 1];
                 }
                 customers[customers.length - 1] = null;
+                nextFreeIndex --;
                 break;
             }
         }
@@ -121,6 +124,11 @@ public class Customers {
     // f) return reference table with all customers
     public Customer[] getCustomers() {
 
-        return this.customers;
+        Customer[] c = new Customer [customers.length];
+
+        for (int i = 0; i < customers.length; i++) {
+            c[i] = customers[i];
+        }
+        return c;
     }
 }

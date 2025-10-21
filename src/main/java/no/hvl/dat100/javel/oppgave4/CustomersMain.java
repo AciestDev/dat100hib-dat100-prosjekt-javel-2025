@@ -70,13 +70,9 @@ public class CustomersMain {
         boolean customers1 = ppl.addCustomer(one);
         boolean customers2 = ppl.addCustomer(two);
         boolean customers3 = ppl.addCustomer(three);
-        boolean customers4 = ppl.addCustomer(four);
-        boolean customers5 = ppl.addCustomer(five);
-        boolean customers6 = ppl.addCustomer(six);
 
         System.out.println("Customer 1: " + customers1);
         System.out.println("Customer 3: " + customers3);
-        System.out.println("Customer 6: " + customers6 + "\n");
 
 
 
@@ -93,7 +89,7 @@ public class CustomersMain {
         System.out.println(three.toString());
         System.out.print(one.toString());
         ppl.removeCustomer(1);
-        System.out.println(one.toString());
+        System.out.println(ppl.getCustomer(4).toString());
         System.out.println(three.toString() + "\n");
 
 
@@ -105,5 +101,6 @@ public class CustomersMain {
         for (int i = 0; i < ppl.getCustomers().length; i++) {
             System.out.println(ppl.getCustomers()[i].toString() + "\n\n");
         }
+
     }
 }
