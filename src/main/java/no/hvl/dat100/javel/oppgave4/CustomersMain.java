@@ -27,34 +27,13 @@ public class CustomersMain {
         System.out.println();
 
         // a) Complete constructor
-        Customers ppl = new Customers(10);
+        Customers ppl = new Customers(5);
+
         Customer one = new Customer("Sander", "sander@gmail.com", 1, PowerAgreementType.SPOTPRICE);
         Customer two = new Customer("Sivert", "Sivert@gmail.com", 4, PowerAgreementType.NORGESPRICE);
         Customer three = new Customer("Tor-leif", "Tor.leif@gmail.com", 8000, PowerAgreementType.POWERSUPPORT);
-        Customer four = new Customer();
-        Customer five = new Customer();
-        Customer six = new Customer();
 
-        /*
-        for (int i = 0; i < ppl.getCustomers().length; i++) {
-            oneNewCustomer();
-        }
 
-        test[0].setName("Sander");
-        test[0].setEmail("sander@gmail.com");
-        test[0].setCustomer_id(4);
-        test[0].setPowerAgreementType(PowerAgreementType.SPOTPRICE);
-
-        test[1].setName("Tim");
-        test[1].setEmail("tim@gmail.com");
-        test[1].setCustomer_id(1);
-        test[1].setPowerAgreementType(PowerAgreementType.NORGESPRICE);
-
-        System.out.println(test[0].toString());
-        System.out.println(test[1].toString());
-         */
-
-        // TODO If I set all to the default constructor first from Customer then this will give out a 10/10 or however many in the list
         // b) count number of non-null references
 
         System.out.println("b)");
@@ -71,8 +50,10 @@ public class CustomersMain {
         boolean customers2 = ppl.addCustomer(two);
         boolean customers3 = ppl.addCustomer(three);
 
+
         System.out.println("Customer 1: " + customers1);
-        System.out.println("Customer 3: " + customers3);
+        System.out.println("Customer 2: " + customers2);
+        System.out.println("Customer 3: " + customers3 + "\n");
 
 
 
@@ -80,27 +61,24 @@ public class CustomersMain {
 
         System.out.println("b & c)");
         System.out.println("There are: " + ppl.countNonNull() + " nonNull slots filled in the customers class");
-        Customer test = ppl.getCustomer(4);
-        System.out.print("test: \n" + test.toString() + "\n");
+        System.out.print("getCustomer test: \n" + ppl.getCustomer(4).toString() + "\n");
 
         // e) remove customer with given id from reference table
 
         System.out.println("e)");
-        System.out.println(three.toString());
-        System.out.print(one.toString());
-        ppl.removeCustomer(1);
-        System.out.println(ppl.getCustomer(4).toString());
-        System.out.println(three.toString() + "\n");
+        System.out.println(ppl.removeCustomer(1));
 
 
-        //  TODO How do I fix it so it prints all of them while still keeping the ones not initialized actually not initialized. Look at question b for example of problem
+
+
         // f) return reference table with all customers
 
         System.out.println("f)");
 
         for (int i = 0; i < ppl.getCustomers().length; i++) {
-            System.out.println(ppl.getCustomers()[i].toString() + "\n\n");
+            System.out.println(ppl.getCustomers()[i].toString());
         }
+
 
     }
 }

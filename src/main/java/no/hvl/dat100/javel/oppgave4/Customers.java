@@ -1,9 +1,6 @@
 package no.hvl.dat100.javel.oppgave4;
 
 import no.hvl.dat100.javel.oppgave3.Customer;
-import no.hvl.dat100.javel.oppgave3.PowerAgreementType;
-
-import javax.swing.*;
 
 public class Customers {
 
@@ -27,7 +24,7 @@ public class Customers {
             if(customers[i] != null) {
                 count++;
             } else {
-                System.out.println("tings");
+                break;
             }
         }
 
@@ -62,7 +59,7 @@ public class Customers {
         boolean inserted = true;
 
         if (nextFreeIndex >= customers.length) {
-            System.out.println("Doesn't work. Pls fix code lmao");
+            System.out.println("add customer does not work because the list is full");
             inserted = false;
         } else if (customers[nextFreeIndex] == null) {
             customers[nextFreeIndex] = c;
@@ -72,25 +69,6 @@ public class Customers {
             nextFreeIndex++;
         } while (nextFreeIndex < customers.length && customers[nextFreeIndex] != null);
 
-        /*
-        switch (customers) {
-            case null:
-                inserted = true;
-                customers = c;
-                break;
-            case !Boolean.parseBoolean(null):
-                break;
-            default:
-                System.out.println("Doesn't work. Pls fix code lmao");
-        }
-
-        for(int i = 0; i < customers.length; i++) {
-            if (customers[i] == null) {
-                customers[i] = c;
-                inserted = true;
-            }
-        }
-         */
         return inserted;
     }
 
@@ -99,24 +77,29 @@ public class Customers {
 
         Customer c = null;
 
-        for (int i = 0; i <= customers.length; i++) {
+        for (int i = 0; i < customers.length; i++) {
             if (customers[i] != null && customers[i].getCustomer_id() == customer_id) {
                 c = customers[i];
                 customers[i] = null;
-                System.out.println("Customer with id: " + customer_id + " is removed. \nThis was the customers info:");
+                System.out.println("Customer with id: " + customer_id + " is removed. \nThis was the customers info:\n\n");
 
                 for (int j = i; j < customers.length - 1; j++) {
-                    customers[j] = customers[j + 1];
+                    if (customers[j+1] != null) {
+                        customers[j] = customers[j + 1];
+                    } else if(customers[j] != null && customers[j+1] == null) {
+                        customers[j] = null;
+                        nextFreeIndex --;
+                        break;
+                    }
                 }
-                customers[customers.length - 1] = null;
-                nextFreeIndex --;
                 break;
+            } else if (customers[i] == null || customers[i].getCustomer_id() != customer_id){
+                    System.out.println("Customer " + customer_id + " not found.");
+                    break;
             }
         }
 
-        if (c == null) {
-            System.out.println("Customer " + customer_id + " not found.");
-        }
+
 
         return c;
     }
@@ -124,10 +107,14 @@ public class Customers {
     // f) return reference table with all customers
     public Customer[] getCustomers() {
 
-        Customer[] c = new Customer [customers.length];
+        Customer[] c =  new Customer[countNonNull()];
 
         for (int i = 0; i < customers.length; i++) {
-            c[i] = customers[i];
+            if (customers[i] != null) {
+                c[i] = customers[i];
+            } else {
+                break;
+            }
         }
         return c;
     }

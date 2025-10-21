@@ -1,6 +1,5 @@
 package no.hvl.dat100.javel.oppgave1;
 
-import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
 
 
@@ -34,28 +33,11 @@ public class DailyPower {
             }
         }
     }
-    /*
-    public static void printUsage(double[] usage, String things) {
-
-        for (int i = 0; i<usage.length; i++){
-
-            if(i % 6 == 0) {
-                System.out.println();
-                }
-            System.out.print(usage[i] + things + " ");
-        }
-
-    }
-    */
 
     // c) compute power usage for a single day
     public static double computePowerUsage(double[] usage) {
 
-        double sum = 0;
-
-        sum = DoubleStream.of(usage).sum();
-
-        return sum;
+        return DoubleStream.of(usage).sum();
     }
 
     // d) compute spot price for a single day
