@@ -28,9 +28,9 @@ public class InvoiceMain {
         Ctwo.computeAmount();
         Cthree.computeAmount();
 
-        Cone.computeAmount();
-        Ctwo.computeAmount();
-        Cthree.computeAmount();
+        Cone.printInvoice();
+        Ctwo.printInvoice();
+        Cthree.printInvoice();
 
     }
 }

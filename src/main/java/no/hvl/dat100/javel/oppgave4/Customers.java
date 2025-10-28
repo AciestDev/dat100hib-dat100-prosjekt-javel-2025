@@ -61,6 +61,7 @@ public class Customers {
         if (nextFreeIndex >= customers.length) {
             System.out.println("add customer does not work because the list is full");
             inserted = false;
+            return inserted;
         } else if (customers[nextFreeIndex] == null) {
             customers[nextFreeIndex] = c;
         }

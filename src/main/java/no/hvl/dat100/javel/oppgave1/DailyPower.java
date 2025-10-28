@@ -46,7 +46,7 @@ public class DailyPower {
         double price = 0;
 
         for (int i = 0; i<prices.length; i++){
-            price = price + usage[i] * prices[i];
+            price += usage[i] * prices[i];
         }
 
         price = Math.round(price * 100) / 100.0;
@@ -79,7 +79,7 @@ public class DailyPower {
         double support = 0;
 
         for (int i = 0; i<prices.length; i++){
-            support = support + getSupport(usage[i], prices[i]);
+            support += getSupport(usage[i], prices[i]);
         }
 
         support = Math.round(support * 100) / 100.0;
